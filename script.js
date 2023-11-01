@@ -95,7 +95,6 @@ buscaAPI.addEventListener('click', function(){
 })
 
 // adiciona
-
 btnAdd.addEventListener('click', () => {
     let animalAdd = {
         name: document.querySelector("#nomeAdd").value,
@@ -149,7 +148,6 @@ buscaId.addEventListener("blur", function(){
 })
 
 // deleta
-
 deleteAnimal.addEventListener("click", function(){
     let valueInput = document.querySelector("#idSearchDelete").value
     fetch(" http://cafepradev.com.br:21020/animals/delete", {
