@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Testador API Animals</title>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-12 titulo text-center">
+                    <a href="index.html"><h1>Teste aqui a API Animals</h1></a>
+                </div>
+            </div>
+        </header>
+
+        <!-- botoes -->
+        <div class="row">
+            <div class="col-12">
+                <button class="btn w-100 botao" id="bt-Search">Pesquisar</button>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <button class="btn w-100 botao" id="bt-List" >Listar</button>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <button class="btn w-100 botao" id="bt-Add">Adicionar</button>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <button class="btn w-100 botao" id="bt-Del">Deletar</button>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <button class="btn w-100 botao" id="bt-Update">Atualizar</button>
+            </div>
+        </div>
+        
+        <!-- lista -->
+        <div class="row justify-content-center p-5 text-center lista elemento" id="List">
+            <div class="col">
+                <table class="table table-striped tabela">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Espécie</th>
+                            <th>Cor</th>
+                            <th>Tamanho</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableList">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!--pesquisa -->
+        <div class="row justify-content-center p-5 text-center busca elemento" id="Search">
+            <h4 class="titulo-elementos">Pesquisar Animal: </h4>
+            <div class="col-4">
+                <form action="">
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control " name="idSearch" id="idSearch" placeholder="ID">
+                                <label for="">ID</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn mt-2 botaoElemento" id="searchID">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Espécie</th>
+                                <th>Cor</th>
+                                <th>Tamanho</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablebody">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- adiciona -->
+        <div class="row justify-content-center p-5 text-center  elemento adiciona">
+            <h4 class="titulo-elementos">Adicionar Animal: </h4>
+            <div class="col-4">
+                <form action="">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="nomeAdd" id="nomeAdd" placeholder="">
+                        <label for="nomeAdd">Nome</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="especieAdd" id="especieAdd" placeholder="">
+                        <label for="especieAdd">Espécie</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="corAdd" id="corAdd" placeholder="">
+                        <label for="corAdd">Cor</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="tamanhoAdd" id="tamanhoAdd" placeholder="">
+                        <label for="tamanhoAdd">Tamanho</label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn botaoElemento" id="btnAdd">Adicionar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- deleta-->
+        <div class="row justify-content-center p-5 text-center elemento deleta">
+            <h4 class="titulo-elementos">Deletar Animal: </h4>
+            <div class="col-4">
+                <form action="">
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" name="idSearchDelete" id="idSearchDelete" placeholder="" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Importante:" data-bs-content="Somente números, sem pontos, víruglas ou espaços.">
+                                <label for="idSearchDelete">ID</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn mt-2 botaoElemento" id="btnDelete">Deletar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+            <!-- atualiza -->
+            <div class="row justify-content-center p-5 text-center elemento atualiza">
+                <h4 class="titulo-elementos">Atualizar Animal: </h4>
+                <div class="col-4">
+                    <form action="">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" name="buscaId" id="buscaId">
+                            <label for="buscaId">ID</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="atualizaNome" id="atualizaNome">
+                            <label for="atualizaNome">Nome</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="atualizaEspecie" id="atualizaEspecie">
+                            <label for="atualizaEspecie">Espécie</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="atualizaCor" id="atualizaCor">
+                            <label for="atualizaCor">Cor</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="atualizaTamanho" id="atualizaTamanho">
+                            <label for="atualizaTamanho">Tamanho</label>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn botaoElemento" id="btnPut">Atualizar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
