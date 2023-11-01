@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Testador API Animals</title>
 </head>
 <body>
@@ -59,7 +59,7 @@
                 </table>
             </div>
         </div>
-        
+
         <!--pesquisa -->
         <div class="row justify-content-center p-5 text-center busca elemento" id="Search">
             <h4 class="titulo-elementos">Pesquisar Animal: </h4>
@@ -96,7 +96,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- adiciona -->
         <div class="row justify-content-center p-5 text-center  elemento adiciona">
@@ -137,7 +136,7 @@
                     <div class="row">
                         <div class="col-10">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" name="idSearchDelete" id="idSearchDelete" placeholder="" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Importante:" data-bs-content="Somente números, sem pontos, víruglas ou espaços.">
+                                <input type="number" class="form-control" name="idSearchDelete" id="idSearchDelete">
                                 <label for="idSearchDelete">ID</label>
                             </div>
                         </div>
@@ -148,10 +147,9 @@
                 </form>
             </div>
         </div>
-    </div>
-
-            <!-- atualiza -->
-            <div class="row justify-content-center p-5 text-center elemento atualiza">
+        
+        <!-- atualiza -->
+        <div class="row justify-content-center p-5 text-center elemento atualiza">
                 <h4 class="titulo-elementos">Atualizar Animal: </h4>
                 <div class="col-4">
                     <form action="">
@@ -175,7 +173,7 @@
                             <input type="text" class="form-control" name="atualizaTamanho" id="atualizaTamanho">
                             <label for="atualizaTamanho">Tamanho</label>
                         </div>
-    
+                        
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn botaoElemento" id="btnPut">Atualizar</button>
@@ -184,7 +182,7 @@
                     </form>
                 </div>
             </div>
-
+            
         </div>
     </div>
 
@@ -193,12 +191,10 @@
         </div>
 
       <footer class="text-center text-white">
-        <div class="text-center p-3 bg-black">
+        <div class="p-3 bg-black">
          <h6>Feito por: Bruno Chiavenato</h6>
         </div>
-
       </footer>
-    </section>
     
 
     <script src="js/bootstrap.bundle.min.js"></script>

@@ -4,6 +4,12 @@ const btAdd = document.querySelector("#bt-Add")
 const btUpdate = document.querySelector("#bt-Update")
 const btDel = document.querySelector("#bt-Del")
 const botoes = document.querySelectorAll(".elemento")
+const buscaId = document.querySelector("#buscaId");
+const atualizaAnimal = document.querySelector("#btnPut");
+const forms = document.querySelectorAll("form");
+const buscaAPI = document.querySelector("#searchID");
+const btnAdd = document.querySelector("#btnAdd")
+const deleteAnimal = document.querySelector("#btnDelete");
 
 const buscar = document.querySelector('.busca')
 const listar = document.querySelector('.lista')
@@ -11,8 +17,7 @@ const adicionar = document.querySelector('.adiciona')
 const atualizar = document.querySelector('.atualiza')
 const deletar = document.querySelector('.deleta')
 
-const buscaId = document.querySelector("#buscaId");
-const atualizaAnimal = document.querySelector("#btnPut");
+
 
 btSearch.addEventListener('click', ()=>{
     alterarBotoes("busca")
@@ -28,9 +33,9 @@ btList.addEventListener('click', ()=>{
     .then(ret => ret.json())
     .then((data) => {
         console.log(data);
-        let structure = '';
+        let estrutura = '';
         for(pos in data){
-            structure += `
+            estrutura += `
                         <tr>
                             <th>${data[pos].id}</th>
                             <th>${data[pos].name}</th>
@@ -40,7 +45,7 @@ btList.addEventListener('click', ()=>{
                         </tr>
                         `
                     }
-                document.querySelector("#tableList").innerHTML = structure;
+                document.querySelector("#tableList").innerHTML = estrutura;
     })
 })
 
@@ -62,11 +67,9 @@ btDel.addEventListener('click', ()=>{
 function alterarBotoes(botao){
     botoes.forEach(function (botao){
         botao.classList.add("elemento")
-
     })
 }
 
-const forms = document.querySelectorAll("form");
 forms.forEach(function(form) {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -74,7 +77,6 @@ forms.forEach(function(form) {
 });
 
 // pesquisa
-let buscaAPI = document.querySelector("#searchID");
 buscaAPI.addEventListener('click', function(){
     let inputValue = document.querySelector("#idSearch").value
 
@@ -93,7 +95,7 @@ buscaAPI.addEventListener('click', function(){
 })
 
 // adiciona
-let btnAdd = document.querySelector("#btnAdd")
+
 btnAdd.addEventListener('click', () => {
     let animalAdd = {
         name: document.querySelector("#nomeAdd").value,
@@ -117,12 +119,12 @@ btnAdd.addEventListener('click', () => {
     .then(ret => {
         alert("Animal Adicionado!")
         if(!ret){
-            throw new Error("Erro na requisição! Verifique os dados informados")
+            throw new Error("Erro ao enviar requisição.")
         }
         return ret.json()
     })
     .catch(error => {
-        alert("Erro ao adicionar.")
+        alert(error)
     })
 })
 
@@ -145,6 +147,31 @@ buscaId.addEventListener("blur", function(){
         animal.size.value = data.size;
     })
 })
+
+// deleta
+
+deleteAnimal.addEventListener("click", function(){
+    let valueInput = document.querySelector("#idSearchDelete").value
+    fetch(" http://cafepradev.com.br:21020/animals/delete", {
+        method: "DELETE",
+        headers : {
+            "Content-type" : "application/json; charset=UTF-8"
+        },
+        body : JSON.stringify({
+            "id": valueInput,
+        }) 
+    })
+    .then(ret => {
+        if(!ret){
+            throw new Error("Erro ao enviar requisição")
+        }
+        alert("Animal Deletado!")
+        return ret.json()
+    })
+    .catch(error => {
+        alert(error)
+    })
+    })
 
 //atualiza id
 atualizaAnimal.addEventListener('click', function(){
@@ -169,10 +196,6 @@ atualizaAnimal.addEventListener('click', function(){
         return ret.json()
     })
     .catch(error => {
-        alert("Erro ao atualizar.")
+        alert(error)
     })
 })
-
-
-
-
