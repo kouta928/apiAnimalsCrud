@@ -5,7 +5,7 @@ const btUpdate = document.querySelector("#bt-Update")
 const btDel = document.querySelector("#bt-Del")
 const botoes = document.querySelectorAll(".elemento")
 const buscaId = document.querySelector("#buscaId");
-const atualizaAnimal = document.querySelector("#btnPut");
+const atualizaAnimal = document.querySelector("#btAtualiza");
 const forms = document.querySelectorAll("form");
 const buscaAPI = document.querySelector("#searchID");
 const btnAdd = document.querySelector("#btnAdd")
@@ -16,8 +16,6 @@ const listar = document.querySelector('.lista')
 const adicionar = document.querySelector('.adiciona')
 const atualizar = document.querySelector('.atualiza')
 const deletar = document.querySelector('.deleta')
-
-
 
 btSearch.addEventListener('click', ()=>{
     alterarBotoes("busca")
@@ -89,7 +87,6 @@ buscaAPI.addEventListener('click', function(){
                             <th>${data.color}</th>
                             <th>${data.size}</th>
                         </tr>`
-
         document.querySelector("#tablebody").innerHTML = structure;
     })
 })
@@ -102,7 +99,6 @@ btnAdd.addEventListener('click', () => {
         color: document.querySelector("#corAdd").value,
         size: document.querySelector("#tamanhoAdd").value
     }
-    
     fetch("http://cafepradev.com.br:21020/animals/insert", {
         method: "POST",
         headers : {
@@ -124,26 +120,6 @@ btnAdd.addEventListener('click', () => {
     })
     .catch(error => {
         alert(error)
-    })
-})
-
-// busca id para atualização
-let animal = {
-    name: document.querySelector("#atualizaNome"),
-    species: document.querySelector("#atualizaEspecie"),
-    color:  document.querySelector("#atualizaCor"),
-    size:  document.querySelector("#atualizaTamanho")
-}
-
-buscaId.addEventListener("blur", function(){
-    let id = buscaId.value;
-    fetch(`http://cafepradev.com.br:21020/animals/search/${id}`)
-    .then(ret => ret.json())
-    .then(data => {
-        animal.name.value = data.name;
-        animal.species.value = data.species;
-        animal.color.value = data.color;
-        animal.size.value = data.size;
     })
 })
 
@@ -171,7 +147,26 @@ deleteAnimal.addEventListener("click", function(){
     })
     })
 
-//atualiza id
+// busca id para atualização
+let animal = {
+    name: document.querySelector("#atualizaNome"),
+    species: document.querySelector("#atualizaEspecie"),
+    color:  document.querySelector("#atualizaCor"),
+    size:  document.querySelector("#atualizaTamanho")
+}
+//atualiza lista de atualização por id
+buscaId.addEventListener("blur", function(){
+    let id = buscaId.value;
+    fetch(`http://cafepradev.com.br:21020/animals/search/${id}`)
+    .then(ret => ret.json())
+    .then(data => {
+        animal.name.value = data.name;
+        animal.species.value = data.species;
+        animal.color.value = data.color;
+        animal.size.value = data.size;
+    })
+})
+//atualiza
 atualizaAnimal.addEventListener('click', function(){
     fetch("http://cafepradev.com.br:21020/animals/update", {
         method: "PUT",
