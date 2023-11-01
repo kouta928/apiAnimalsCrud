@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,300&display=swap');
+
 body{
     background: linear-gradient(180deg, #72ffe5 0%, #144480 100%);
     min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .titulo{
